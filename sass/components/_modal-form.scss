@@ -51,18 +51,6 @@
     outline: none;
     border-color: var(--accent-color);
   }
-
-  &-wrapper {
-    position: relative;
-
-    display: block;
-    margin-top: 4px;
-  }
-
-  &:hover + .modal-form-icon,
-  &:focus + .modal-form-icon {
-    fill: var(--accent-color);
-  }
 }
 
 .modal-form-icon {
@@ -76,6 +64,18 @@
   fill: var(--primary-text-color);
 
   transition: fill 250ms var(--timing-function);
+
+  .modal-form-input:hover + &,
+  .modal-form-input:focus + & {
+    fill: var(--accent-color);
+  }
+}
+
+.modal-form-input-wrapper {
+  position: relative;
+
+  display: block;
+  margin-top: 4px;
 }
 
 .modal-form-comments {
@@ -104,12 +104,16 @@
   }
 }
 
-.modal-form-policy {
+.modal-form-policy-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+
   display: flex;
-  justify-content: center;
   align-items: center;
 
-  &-text::before {
+  &::before {
     display: inline-block;
     content: "";
     width: 16px;
@@ -121,27 +125,24 @@
     background-color: var(--primary-white-color);
   }
 
-  &-text {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.71;
-    letter-spacing: 0.03em;
-    @extend .modal-form-policy;
-  }
-
-  &:checked + &-text::before {
+  .modal-form-policy:checked + &::before {
     background-color: var(--accent-color);
     /* background-image: url(../images/icons/check.svg); */
     background-image: url('data:image/svg+xml,%3Csvg width="16" height="15" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M1.957 4.752l-.069-.066-.069.065-.888.842-.076.072.076.073 3.496 3.334.069.066.069-.066 7.504-7.158.076-.073-.076-.072-.882-.841-.069-.066-.069.066-6.553 6.246-2.539-2.422z" fill="%23fff" stroke="%23fff" stroke-width=".2"/%3E%3C/svg%3E');
     border: 2px solid var(--accent-color);
     outline: none;
-    @extend .modal-form-policy;
-  }
 
-  &-wrapper {
-    @extend .modal-form-policy;
-    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
   }
+}
+
+.modal-form-policy-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 30px;
 }
 
 .contract-conditions {
